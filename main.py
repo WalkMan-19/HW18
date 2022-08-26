@@ -60,6 +60,7 @@ def load_data():
     g1 = Genre(id=1, name="криминал")
     g2 = Genre(id=2, name="детектив")
 
+    db.drop_all()
     db.create_all()
 
     with db.session.begin():
