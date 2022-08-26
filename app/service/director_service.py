@@ -2,7 +2,7 @@ from app.dao.director_dao import DirectorDAO
 
 
 class DirectorService:
-    def __int__(self, dao: DirectorDAO):
+    def __init__(self, dao: DirectorDAO):
         self.dao = dao
 
     def get_one(self, did: int):

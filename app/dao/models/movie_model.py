@@ -13,8 +13,8 @@ class Movie(db.Model):
     genre_id = db.Column(db.Integer, db.ForeignKey("genre.id"))
     director_id = db.Column(db.Integer, db.ForeignKey("director.id"))
 
-    director = db.relationship("director")
-    genre = db.relationship("genre")
+    director = db.relationship("Director")
+    genre = db.relationship("Genre")
 
 
 class MovieSchema(Schema):
