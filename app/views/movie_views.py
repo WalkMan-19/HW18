@@ -12,7 +12,8 @@ movies_schema = MovieSchema(many=True)
 @movie_ns.route('/')
 class MoviesView(Resource):
     def get(self):
-        all_movies = movie_service.get_all()
+        params = request.args      # /movies/?director_id=1 -> params = (['director_id', '1'])
+        all_movies = movie_service.get_all(params)
         return movies_schema.dump(all_movies), 200
 
     def post(self):

@@ -11,6 +11,9 @@ class MovieDAO:
     def get_all(self):
         return self.session.query(Movie).all()
 
+    def filter_data(self, parameter):  # params = 1
+        return self.session.query(Movie).filter(Movie.director_id == parameter)
+
     def create(self, data):
         movie = Movie(**data)
         self.session.add(movie)
