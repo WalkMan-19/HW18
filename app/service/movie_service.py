@@ -9,10 +9,8 @@ class MovieService:
         return self.dao.get_one(mid)
 
     def get_all(self, params):
-        director_id = params.get('director_id')
-        if director_id is not None:
-            return self.dao.filter_data(director_id)
-
+        if params != {}:
+            return self.dao.filter_data(**params)
         return self.dao.get_all()
 
     def create(self, data):

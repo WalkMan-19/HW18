@@ -11,8 +11,13 @@ class MovieDAO:
     def get_all(self):
         return self.session.query(Movie).all()
 
-    def filter_data(self, parameter):  # params = 1
-        return self.session.query(Movie).filter(Movie.director_id == parameter)
+    def filter_data(self, **params):
+        if params.get("director_id"):
+            return self.session.query(Movie).filter(Movie.director_id == params.get("director_id"))
+        if params.get("genre_id"):
+            return self.session.query(Movie).filter(Movie.genre_id == params.get("genre_id"))
+        if params.get("year"):
+            return self.session.query(Movie).filter(Movie.year == params.get("year"))
 
     def create(self, data):
         movie = Movie(**data)
